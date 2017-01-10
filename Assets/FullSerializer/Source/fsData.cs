@@ -399,5 +399,15 @@ namespace FullSerializer {
             return _value.GetHashCode();
         }
         #endregion Equality Comparisons
+        
+        /// <summary>Force replaces the value stored in this fsData.</summary>
+        public void ForceReplaceValue(object o){
+            _value = o;
+        }
+
+        /// <summary>Force replaces the value stored in this fsData.</summary>
+        public void ForceReplaceValue(fsData data){
+            _value = data._value;
+        }
     }
 }
