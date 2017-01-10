@@ -581,6 +581,14 @@ namespace FullSerializer {
             return TrySerialize(storageType, null, instance, out data);
         }
 
+        /// <summary>Shorthand which calls the fsJSonPrinter on the serialized instance, assuming serialization executes correctly.</summary>
+        public string TrySerializeToJSON<T>(T instance, bool prettyPrint = true)
+        {
+            fsData data;
+            TrySerialize(instance, out data).AssertSuccess();
+            return prettyPrint ? fsJsonPrinter.PrettyJson(data) : fsJsonPrinter.CompressedJson(data);
+        }
+
         /// <summary>
         /// Serialize the given value.
         /// </summary>
@@ -729,6 +737,17 @@ namespace FullSerializer {
         /// </summary>
         public fsResult TryDeserialize(fsData data, Type storageType, ref object result) {
             return TryDeserialize(data, storageType, null, ref result);
+        }
+
+        /// <summary>Shorthand which calls the fsJSonPrinter on the serialized instance, assuming serialization executes correctly.</summary>
+        public T TryDeSerializeToJSON<T>(string json){
+            fsData data;
+            T output = default(T);
+
+            fsJsonParser.Parse(json, out data)
+                        .AssertSuccess();
+            TryDeserialize(data, ref output).AssertSuccess();
+            return output;
         }
 
         /// <summary>
