@@ -75,7 +75,7 @@ namespace FullSerializer.Internal {
                         deserializedValue = property.Read(instance);
                     }
 
-                    var itemResult = Serializer.TryDeserialize(propertyData, property.OverrideConverterType, property.StorageType, ref deserializedValue);
+                    var itemResult = Serializer.TryDeserialize(propertyData, property.StorageType, property.OverrideConverterType, ref deserializedValue);
                     result.AddMessages(itemResult);
                     if (itemResult.Failed) continue;
 
