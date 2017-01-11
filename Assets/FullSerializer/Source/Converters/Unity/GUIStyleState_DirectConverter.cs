@@ -14,8 +14,8 @@ namespace FullSerializer.Internal.DirectConverters {
         protected override fsResult DoSerialize(GUIStyleState model, Dictionary<string, fsData> serialized) {
             var result = fsResult.Success;
 
-            result += SerializeMember(serialized, null, "background", model.background);
-            result += SerializeMember(serialized, null, "textColor", model.textColor);
+            result += SerializeMember(serialized, "background", model.background, null);
+            result += SerializeMember(serialized, "textColor", model.textColor, null);
 
             return result;
         }
@@ -24,11 +24,11 @@ namespace FullSerializer.Internal.DirectConverters {
             var result = fsResult.Success;
 
             var t0 = model.background;
-            result += DeserializeMember(data, null, "background", out t0);
+            result += DeserializeMember(data, "background", out t0, null);
             model.background = t0;
 
             var t2 = model.textColor;
-            result += DeserializeMember(data, null, "textColor", out t2);
+            result += DeserializeMember(data, "textColor", out t2, null);
             model.textColor = t2;
 
             return result;

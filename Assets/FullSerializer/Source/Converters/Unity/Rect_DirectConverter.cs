@@ -14,10 +14,10 @@ namespace FullSerializer.Internal.DirectConverters {
         protected override fsResult DoSerialize(Rect model, Dictionary<string, fsData> serialized) {
             var result = fsResult.Success;
 
-            result += SerializeMember(serialized, null, "xMin", model.xMin);
-            result += SerializeMember(serialized, null, "yMin", model.yMin);
-            result += SerializeMember(serialized, null, "xMax", model.xMax);
-            result += SerializeMember(serialized, null, "yMax", model.yMax);
+            result += SerializeMember(serialized, "xMin", model.xMin, null);
+            result += SerializeMember(serialized, "yMin", model.yMin, null);
+            result += SerializeMember(serialized, "xMax", model.xMax, null);
+            result += SerializeMember(serialized, "yMax", model.yMax, null);
 
             return result;
         }
@@ -26,19 +26,19 @@ namespace FullSerializer.Internal.DirectConverters {
             var result = fsResult.Success;
 
             var t0 = model.xMin;
-            result += DeserializeMember(data, null, "xMin", out t0);
+            result += DeserializeMember(data, "xMin", out t0, null);
             model.xMin = t0;
 
             var t1 = model.yMin;
-            result += DeserializeMember(data, null, "yMin", out t1);
+            result += DeserializeMember(data, "yMin", out t1, null);
             model.yMin = t1;
 
             var t2 = model.xMax;
-            result += DeserializeMember(data, null, "xMax", out t2);
+            result += DeserializeMember(data, "xMax", out t2, null);
             model.xMax = t2;
 
             var t3 = model.yMax;
-            result += DeserializeMember(data, null, "yMax", out t3);
+            result += DeserializeMember(data, "yMax", out t3, null);
             model.yMax = t3;
 
             return result;

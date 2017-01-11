@@ -14,10 +14,10 @@ namespace FullSerializer.Internal.DirectConverters {
         protected override fsResult DoSerialize(RectOffset model, Dictionary<string, fsData> serialized) {
             var result = fsResult.Success;
 
-            result += SerializeMember(serialized, null, "bottom", model.bottom);
-            result += SerializeMember(serialized, null, "left", model.left);
-            result += SerializeMember(serialized, null, "right", model.right);
-            result += SerializeMember(serialized, null, "top", model.top);
+            result += SerializeMember(serialized, "bottom", model.bottom, null);
+            result += SerializeMember(serialized, "left", model.left, null);
+            result += SerializeMember(serialized, "right", model.right, null);
+            result += SerializeMember(serialized, "top", model.top, null);
 
             return result;
         }
@@ -26,19 +26,19 @@ namespace FullSerializer.Internal.DirectConverters {
             var result = fsResult.Success;
 
             var t0 = model.bottom;
-            result += DeserializeMember(data, null, "bottom", out t0);
+            result += DeserializeMember(data, "bottom", out t0, null);
             model.bottom = t0;
 
             var t2 = model.left;
-            result += DeserializeMember(data, null, "left", out t2);
+            result += DeserializeMember(data, "left", out t2, null);
             model.left = t2;
 
             var t3 = model.right;
-            result += DeserializeMember(data, null, "right", out t3);
+            result += DeserializeMember(data, "right", out t3, null);
             model.right = t3;
 
             var t4 = model.top;
-            result += DeserializeMember(data, null, "top", out t4);
+            result += DeserializeMember(data, "top", out t4, null);
             model.top = t4;
 
             return result;
